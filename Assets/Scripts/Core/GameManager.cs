@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameState currentState;
+    public GameObject pauseCanvas;
 
     void Awake()
     {
@@ -38,12 +39,15 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         currentState = GameState.Paused;
+        pauseCanvas.SetActive(true);
+
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
         currentState = GameState.Playing;
+        pauseCanvas.SetActive(false);
     }
 
     public void GameOver()
